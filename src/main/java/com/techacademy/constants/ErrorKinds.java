@@ -12,6 +12,8 @@ public enum ErrorKinds {
     RANGECHECK_ERROR,
     // 重複チェックエラー(例外あり)
     DUPLICATE_EXCEPTION_ERROR,
+    // 日付重複チェックエラー(例外なし)
+    DUPLICATE_DATE_ERROR,
     // 重複チェックエラー(例外なし)
     DUPLICATE_ERROR,
     // ログイン中削除チェックエラー
