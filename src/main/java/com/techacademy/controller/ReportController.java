@@ -35,11 +35,14 @@ public class ReportController {
 
 	// 日報一覧画面
 	@GetMapping
-	public String list(Model model) {
-
+	public String list(Model model,@AuthenticationPrincipal UserDetail userDetail) {
+		if (userDetail.getEmployee().getRole() == Employee.Role.ADMIN) {
 		model.addAttribute("listSize", reportService.findAll().size());
 		model.addAttribute("reportList", reportService.findAll());
-
+		}else {
+			model.addAttribute("listSize", reportService.findByEmployee(userDetail.getEmployee()).size());
+			model.addAttribute("reportList", reportService.findByEmployee(userDetail.getEmployee()));
+		}
 		return "report/list";
 	}
 
